@@ -1,4 +1,11 @@
 {
+  "scripts": {
+    "dev": "supabase functions serve --env-file=.env.local --inspect-mode brk .",
+    "dev:no-verify-jwt": "supabase functions serve --env-file=.env.local --no-verify-jwt --inspect-mode brk .",
+    "deploy:development": "./deploy.sh development",
+    "deploy:production": "./deploy.sh production",
+    "gen-types": "supabase gen types typescript --project-id bfozbjjsbwakbucgdpao > database.types.ts"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0"
   }

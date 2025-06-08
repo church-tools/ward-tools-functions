@@ -1,1 +1,6 @@
 /node_modules
+/.env.local
+/.vscode
+/node_modules
+# Supabase temporary files
+supabase/.temp

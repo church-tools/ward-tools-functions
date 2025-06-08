@@ -1,0 +1,9 @@
+{
+   "tasks": {
+     "start": "deno run --watch --unstable --allow-all supabase/functions/*/index.ts",
+     "dev": "deno run --watch --unstable --allow-all supabase/functions/*/index.ts"
+   },
+   "nodeModulesDir": "auto",
+   
+   "envFile": ".env.local"
+ }
