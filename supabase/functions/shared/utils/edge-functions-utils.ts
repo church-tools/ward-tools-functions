@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js";
 import { Database } from "../../../../database.types.ts";
+import { HttpError } from "./error-utils.ts";
 
 const SUPABASE_URL = (Deno.env.get('PROJECT_SUPABASE_URL') ?? Deno.env.get('SUPABASE_URL'))!;
 const SUPABASE_KEY = (Deno.env.get('PROJECT_SUPABASE_ANON_KEY') ?? Deno.env.get('SUPABASE_ANON_KEY'))!;
@@ -18,9 +19,10 @@ export function serve(handler: (req: Request) => Promise<object | void>) {
             );
         } catch (err: unknown) {
             const msg = err instanceof Error ? err.message : "Unknown error";
+            const status = err instanceof HttpError ? err.status : 500;
             return new Response(
                 JSON.stringify({ data: null, error: msg }),
-                { headers: { "Content-Type": "application/json" }, status: 500 },
+                { headers: { "Content-Type": "application/json" }, status },
             );
         }
     })
