@@ -5,7 +5,6 @@ import { HttpError } from "../shared/utils/error-utils.ts";
 
 serve(async req => {
     const token = req.headers.get("Authorization")?.replace("Bearer ", "");
-    return req.headers;
     if (!token) throw new HttpError(401, "Unauthorized");
     const { data: authUser } = await supabase.auth.getUser(token);
     const { count: unitCount } = await supabase
