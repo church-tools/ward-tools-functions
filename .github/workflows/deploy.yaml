@@ -23,3 +23,4 @@ jobs:
 
       - run: |
           supabase functions deploy create-unit --project-ref $PROJECT_ID
+          supabase functions deploy add-unit-to-auth --project-ref $PROJECT_ID
